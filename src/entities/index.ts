@@ -1,2 +1,2 @@
 export { PlantCard } from './PlantCard';
-export { AddPlantModal } from './AddPlantModal';
+export { PlantModal } from './PlantModal';
