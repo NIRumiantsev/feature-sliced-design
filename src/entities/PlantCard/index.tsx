@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, Typography, CardActions, Button } from '@mui/material';
 import { PlantCardProps } from './types';
 

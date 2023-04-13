@@ -4,8 +4,8 @@ import { AddButton, FormField } from 'shared';
 import { AddPlantModalProps } from './types';
 import { defaultPlantData } from './mocks';
 
-const AddPlantModal = (props: AddPlantModalProps) => {
-  const { open, onClose, onAdd } = props;
+const PlantModal = (props: AddPlantModalProps) => {
+  const { open, onClose, onSubmit } = props;
 
   return (
     <Modal
@@ -17,7 +17,7 @@ const AddPlantModal = (props: AddPlantModalProps) => {
         <CardContent>
           <Formik
             initialValues={defaultPlantData}
-            onSubmit={onAdd}
+            onSubmit={onSubmit}
           >
             <Form>
               <Grid
@@ -32,7 +32,7 @@ const AddPlantModal = (props: AddPlantModalProps) => {
                   />
                 </Grid>
                 <Grid item>
-                  <AddButton text="Add"/>
+                  <AddButton text="Submit"/>
                 </Grid>
               </Grid>
             </Form>
@@ -43,4 +43,4 @@ const AddPlantModal = (props: AddPlantModalProps) => {
   )
 };
 
-export { AddPlantModal };
+export { PlantModal };

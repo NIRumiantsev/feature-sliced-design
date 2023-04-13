@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 import { Grid } from '@mui/material';
-import { AddPlantModal, PlantCard } from 'entities';
+import { PlantModal, PlantCard } from 'entities';
 import { addNewPlant, deletePlant, NewPlantData } from 'features';
 import { AddButton } from 'shared';
 import { model } from './model';
+import { useNavigate } from 'react-router-dom';
 
 const PlantList = observer(() => {
   const [addPlantModalOpened, setAddPlantModalOpened] = useState<boolean>(false);
@@ -12,6 +13,8 @@ const PlantList = observer(() => {
   useEffect(() => {
     model.load();
   }, []);
+
+  const navigate = useNavigate();
 
   const plantList = model.plants;
 
@@ -34,6 +37,10 @@ const PlantList = observer(() => {
     model.load();
   };
 
+  const handleClickCard = (plantId: string) => {
+    navigate(`/${plantId}`);
+  };
+
   return (
     <Grid
       spacing={2}
@@ -52,7 +59,10 @@ const PlantList = observer(() => {
         container
       >
         {plantList.map(({ id, ...plant }) => (
-          <Grid item>
+          <Grid
+            onClick={() => handleClickCard(id)}
+            item
+          >
             <PlantCard
               key={id}
               onDeleteClick={() => handleDeletePlant(id)}
@@ -61,10 +71,10 @@ const PlantList = observer(() => {
           </Grid>
         ))}
       </Grid>
-      <AddPlantModal
+      <PlantModal
         open={addPlantModalOpened}
         onClose={handleCloseAddPlantModal}
-        onAdd={handleAddPlant}
+        onSubmit={handleAddPlant}
       />
     </Grid>
   )
