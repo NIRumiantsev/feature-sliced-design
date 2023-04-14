@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { Button, Grid, Typography } from '@mui/material';
+import { IconButton, Button, CircularProgress, Grid, Typography } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
 import { PlantModal } from 'entities/Plant';
@@ -10,6 +10,7 @@ import { editPlant, UpdatedPlantData } from 'features/editPlant';
 import { model } from './model';
 
 const PlantProfile = observer(() => {
+  const [plantLoading, setPlantLoading] = useState<boolean>(false);
   const [editPlantModalOpened, setEditPlantModalOpened] = useState<boolean>(false);
 
   const { plantId } = useParams();
@@ -17,12 +18,18 @@ const PlantProfile = observer(() => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (plantId) {
-      model.load(plantId);
-    }
+    loadPlant()
   }, [plantId]);
 
   const plant = model.plant;
+
+  const loadPlant = async () => {
+    if (plantId) {
+      setPlantLoading(true);
+      await model.load(plantId);
+      setPlantLoading(false);
+    }
+  };
 
   const handleOpenEditPlantModal = () => {
     setEditPlantModalOpened(true);
@@ -52,31 +59,34 @@ const PlantProfile = observer(() => {
       <Grid item>
         <Button onClick={handleClickBack}>Back</Button>
       </Grid>
-      <Grid
-        display="flex"
-        flexDirection="row"
-        spacing={3}
-        container
-      >
-        <Grid item>
-          <Typography variant="h5">
-            {plant?.name}
-          </Typography>
+      {plantLoading ? (
+        <CircularProgress/>
+      ) : (
+        <Grid
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          spacing={1}
+          container
+        >
+          <Grid item><Typography variant="caption">Plant name:</Typography></Grid>
+          <Grid item><Typography variant="h5">{plant?.name}</Typography></Grid>
+          <Grid item>
+            <IconButton
+              aria-label="edit"
+              size="small"
+              onClick={handleOpenEditPlantModal}
+            >
+              <EditIcon/>
+            </IconButton>
+          </Grid>
+          <PlantModal
+            open={editPlantModalOpened}
+            onClose={handleCloseEditPlantModal}
+            onSubmit={handleUpdatePlant}
+          />
         </Grid>
-        <Grid item>
-          <Button
-            onClick={handleOpenEditPlantModal}
-            variant="contained"
-          >
-            <EditIcon/>
-          </Button>
-        </Grid>
-        <PlantModal
-          open={editPlantModalOpened}
-          onClose={handleCloseEditPlantModal}
-          onSubmit={handleUpdatePlant}
-        />
-      </Grid>
+      )}
     </Grid>
   )
 });

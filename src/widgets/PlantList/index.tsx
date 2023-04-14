@@ -62,12 +62,10 @@ const PlantList = observer(() => {
         container
       >
         {plantList.map(({ id, ...plant }) => (
-          <Grid
-            onClick={() => handleClickCard(id)}
-            item
-          >
+          <Grid item>
             <PlantCard
               key={id}
+              onEditClick={() => handleClickCard(id)}
               onDeleteClick={() => handleDeletePlant(id)}
               {...plant}
             />
