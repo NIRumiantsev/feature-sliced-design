@@ -1,5 +1,7 @@
 import { collection, getDocs } from 'firebase/firestore';
-import { getDB } from 'utils';
+
+import { getDB } from 'shared/utils';
+
 import { PlantDto } from './types';
 
 const db = getDB();

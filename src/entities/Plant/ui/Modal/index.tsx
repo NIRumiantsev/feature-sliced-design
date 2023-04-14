@@ -1,6 +1,9 @@
 import { Card, CardContent, Grid, Modal } from '@mui/material';
 import { Form, Formik } from 'formik';
-import { AddButton, FormField } from 'shared';
+
+import { AddButton } from 'shared/AddButton';
+import { FormField } from 'shared/FormField';
+
 import { AddPlantModalProps } from './types';
 import { defaultPlantData } from './mocks';
 

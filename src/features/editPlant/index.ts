@@ -1,5 +1,7 @@
 import { doc, updateDoc } from 'firebase/firestore';
-import { getDB } from 'utils';
+
+import { getDB } from 'shared/utils';
+
 import { UpdatedPlantData } from './types';
 
 const db = getDB();

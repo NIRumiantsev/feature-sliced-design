@@ -1,5 +1,6 @@
 import { doc, deleteDoc } from 'firebase/firestore';
-import { getDB } from 'utils';
+
+import { getDB } from 'shared/utils';
 
 const db = getDB();
 

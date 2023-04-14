@@ -1,4 +1,4 @@
-import { PlantList } from 'widgets';
+import { PlantList } from 'widgets/PlantList';
 
 const Greenhouse = () => {
   return (<PlantList/>)
