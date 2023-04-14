@@ -1,4 +1,5 @@
 export type PlantCardProps = {
   name: string,
-  onDeleteClick: () => {},
+  onEditClick: () => void,
+  onDeleteClick: () => void,
 };
