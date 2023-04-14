@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { Grid } from '@mui/material';
-import { PlantModal, PlantCard } from 'entities';
-import { addNewPlant, deletePlant, NewPlantData } from 'features';
-import { AddButton } from 'shared';
+
+import { PlantModal, PlantCard } from 'entities/Plant';
+import { addNewPlant, NewPlantData } from 'features/addNewPlant';
+import { deletePlant } from 'features/deletePlant';
+import { AddButton } from 'shared/AddButton';
+
 import { model } from './model';
-import { useNavigate } from 'react-router-dom';
 
 const PlantList = observer(() => {
   const [addPlantModalOpened, setAddPlantModalOpened] = useState<boolean>(false);
@@ -77,7 +80,7 @@ const PlantList = observer(() => {
         onSubmit={handleAddPlant}
       />
     </Grid>
-  )
+  );
 });
 
 export { PlantList };

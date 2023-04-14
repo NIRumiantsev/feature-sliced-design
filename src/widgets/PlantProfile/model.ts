@@ -1,8 +1,9 @@
 import { action, makeAutoObservable, observable } from 'mobx';
+
 import { loadPlant } from './api';
 import { PlantProfileData } from './types';
 
-class PlantListModel {
+class PlantProfileModel {
   plant: PlantProfileData | null = null;
 
   constructor() {
@@ -17,4 +18,4 @@ class PlantListModel {
   }
 }
 
-export const model = new PlantListModel();
+export const model = new PlantProfileModel();

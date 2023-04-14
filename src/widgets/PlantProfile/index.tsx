@@ -3,8 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { Button, Grid, Typography } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
-import { PlantModal } from 'entities';
-import { editPlant, UpdatedPlantData } from 'features';
+
+import { PlantModal } from 'entities/Plant';
+import { editPlant, UpdatedPlantData } from 'features/editPlant';
+
 import { model } from './model';
 
 const PlantProfile = observer(() => {

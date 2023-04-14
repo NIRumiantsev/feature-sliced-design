@@ -1,5 +1,7 @@
 import { doc, getDoc } from 'firebase/firestore';
-import { getDB } from 'utils';
+
+import { getDB } from 'shared/utils';
+
 import { PlantProfileData } from './types';
 
 const db = getDB();

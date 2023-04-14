@@ -1,6 +1,8 @@
 import { doc, setDoc } from 'firebase/firestore';
 import { v4 as uuid } from 'uuid';
-import { getDB } from 'utils';
+
+import { getDB } from 'shared/utils';
+
 import { NewPlantData } from './types';
 
 const db = getDB();

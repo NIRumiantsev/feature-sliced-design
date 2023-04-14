@@ -1,4 +1,4 @@
-import { PlantProfile } from 'widgets';
+import { PlantProfile } from 'widgets/PlantProfile';
 
 const Profile = () => {
   return (<div><PlantProfile/></div>)
