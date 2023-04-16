@@ -5,7 +5,7 @@ import { IconButton, Button, CircularProgress, Grid, Typography } from '@mui/mat
 import EditIcon from '@mui/icons-material/Edit';
 
 import { PlantModal } from 'entities/Plant';
-import { editPlant, UpdatedPlantData } from 'features/editPlant';
+import { editPlant, UpdatedPlantData } from 'shared/api/editPlant';
 
 import { model } from './model';
 

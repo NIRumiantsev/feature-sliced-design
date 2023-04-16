@@ -1,4 +1,4 @@
-import { NewPlantData } from 'features/addNewPlant';
+import { NewPlantData } from 'shared/api/addNewPlant';
 
 export type AddPlantModalProps = {
   open: boolean,

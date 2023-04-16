@@ -1,8 +1,7 @@
-import { Card, CardContent, Grid, Modal } from '@mui/material';
+import { Button, Card, CardContent, Grid, Modal } from '@mui/material';
 import { Form, Formik } from 'formik';
 
-import { AddButton } from 'shared/AddButton';
-import { FormField } from 'shared/FormField';
+import { FormField } from 'shared/ui/FormField';
 
 import { AddPlantModalProps } from './types';
 import { defaultPlantData } from './mocks';
@@ -35,7 +34,13 @@ const PlantModal = (props: AddPlantModalProps) => {
                   />
                 </Grid>
                 <Grid item>
-                  <AddButton text="Submit"/>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="success"
+                  >
+                    Submit changes
+                  </Button>
                 </Grid>
               </Grid>
             </Form>
