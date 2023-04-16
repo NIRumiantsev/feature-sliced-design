@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react';
-import { Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 
 import { PlantModal, PlantCard } from 'entities/Plant';
-import { addNewPlant, NewPlantData } from 'features/addNewPlant';
-import { deletePlant } from 'features/deletePlant';
-import { AddButton } from 'shared/AddButton';
+import { addNewPlant, NewPlantData } from 'shared/api/addNewPlant';
+import { deletePlant } from 'shared/api/deletePlant';
 
 import { model } from './model';
 
@@ -51,10 +50,14 @@ const PlantList = observer(() => {
       container
     >
       <Grid item>
-        <AddButton
-          text="Add new plant"
+        <Button
+          type="submit"
+          variant="contained"
+          color="success"
           onClick={handleOpenAddPlantModal}
-        />
+        >
+          Add new plant
+        </Button>
       </Grid>
       <Grid
         spacing={2}
